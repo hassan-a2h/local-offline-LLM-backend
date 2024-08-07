@@ -4,15 +4,18 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const createOllamaQuery = require("./utils/createInputQuery");
 
+// Constants
 const app = express();
 const PORT = 3000;
 const MODEL_URL = "http://localhost:11434/api/chat";
 
+// Middlewares defined
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Routes
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -34,6 +37,7 @@ app.post("/chat", async (req, res) => {
   }
 });
 
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
