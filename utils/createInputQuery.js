@@ -1,6 +1,6 @@
 function createOllamaQuery(input) {
   return {
-    model: "dolphin-llama3",
+    model: "qwen2:0.5b",
     messages: [{ role: "user", content: `${input}` }],
     stream: false,
   };
