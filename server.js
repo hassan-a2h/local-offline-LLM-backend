@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const createOllamaQuery = require("./utils/createInputQuery");
 
 const app = express();
 const PORT = 3000;
@@ -32,14 +33,6 @@ app.post("/chat", async (req, res) => {
     res.status(500).json({ error: "Error fetching model response" });
   }
 });
-
-function createOllamaQuery(input) {
-  return {
-    model: "dolphin-llama3",
-    messages: [{ role: "user", content: `${input}` }],
-    stream: false,
-  };
-}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
